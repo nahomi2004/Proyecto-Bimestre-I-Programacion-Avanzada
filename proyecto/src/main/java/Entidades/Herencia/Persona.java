@@ -1,4 +1,4 @@
-package Entidades;
+package Entidades.Herencia;
 
 public class Persona {
     private String cedula;
