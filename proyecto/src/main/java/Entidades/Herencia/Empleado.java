@@ -1,4 +1,4 @@
-package Entidades;
+package Entidades.Herencia;
 
 public class Empleado extends Persona {
     private String ciudad;
@@ -21,7 +21,7 @@ public class Empleado extends Persona {
 
     @Override
     public String toString() {
-        return toString() + "Datos del Empleado\n" +
+        return super.toString() + "\nDatos del Empleado\n" +
                 "\tCiudad: " + ciudad;
     }
 }
