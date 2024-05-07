@@ -1,7 +1,12 @@
 package Entidades.Herencia;
 
+import Entidades.NoHerencia.Direccion;
+
+import java.util.ArrayList;
+
 public class Cliente extends Persona{
     private String celular;
+    private ArrayList<Direccion> direcciones;
 
     public Cliente() {
     }
@@ -9,6 +14,7 @@ public class Cliente extends Persona{
     public Cliente(String cedula, String nombre, String apellido, String mail, String celular) {
         super(cedula, nombre, apellido, mail);
         this.celular = celular;
+        direcciones = new ArrayList<>();
     }
 
     public String getCelular() {
