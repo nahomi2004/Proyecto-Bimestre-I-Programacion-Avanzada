@@ -39,4 +39,12 @@ public class Entrega {
     public void setObs(String obs) {
         this.obs = obs;
     }
+
+    @Override
+    public String toString() {
+        return "Entrega" +
+                "\n\tCodigo: " + codigo +
+                "\n\tFecha: " + fecha +
+                "\n\tObservación: " + obs;
+    }
 }
