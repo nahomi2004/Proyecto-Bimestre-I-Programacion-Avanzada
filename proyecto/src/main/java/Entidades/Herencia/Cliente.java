@@ -4,7 +4,8 @@ import Entidades.NoHerencia.Direccion;
 
 import java.util.ArrayList;
 
-public class Cliente extends Persona{
+public class Cliente extends Persona {
+
     private String celular;
     private ArrayList<Direccion> direcciones;
 
@@ -17,6 +18,14 @@ public class Cliente extends Persona{
         direcciones = new ArrayList<>();
     }
 
+    public ArrayList<Direccion> getDirecciones() {
+        return direcciones;
+    }
+
+    public void setDirecciones(ArrayList<Direccion> direcciones) {
+        this.direcciones = direcciones;
+    }
+
     public String getCelular() {
         return celular;
     }
@@ -26,10 +35,9 @@ public class Cliente extends Persona{
     }
 
     /*Método HacerActual()  ---->   actualiza la dirección actual*/
-
     @Override
     public String toString() {
-        return super.toString() + "\nDatos del Cliente\n" +
-                "\tCelular: " + celular;
+        return super.toString() + "\nDatos del Cliente\n"
+                + "\tCelular: " + celular;
     }
 }
