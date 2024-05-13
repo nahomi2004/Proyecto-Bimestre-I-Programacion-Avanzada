@@ -1,11 +1,15 @@
 package Entidades.NoHerencia;
 
+import Entidades.Herencia.Cliente;
+
 import java.time.LocalDate;
 
 public class Entrega {
     private String codigo;
     private LocalDate fecha;
     private String obs;
+    private Paquete paquete;
+    private Cliente cliente;
 
     public Entrega() {
     }
@@ -38,6 +42,22 @@ public class Entrega {
 
     public void setObs(String obs) {
         this.obs = obs;
+    }
+
+    public Paquete getPaquete() {
+        return paquete;
+    }
+
+    public void setPaquete(Paquete paquete) {
+        this.paquete = paquete;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     @Override
