@@ -1,5 +1,8 @@
 package Entidades.Herencia;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class Repartidor extends Empleado {
     private int zona;
 

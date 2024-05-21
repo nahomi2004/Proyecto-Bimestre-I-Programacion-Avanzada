@@ -1,7 +1,15 @@
 package Entidades.NoHerencia;
 
+import jakarta.persistence.Basic;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Direccion {
+    @Id
     private String codigo;
+
+    @Basic
     private String calle1;
     private String calle2;
     private String referencia;

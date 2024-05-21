@@ -1,5 +1,8 @@
 package Entidades.Herencia;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class Bodeguero extends  Empleado {
     private String local;
 

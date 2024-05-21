@@ -1,10 +1,18 @@
 package Entidades.NoHerencia;
 
+import jakarta.persistence.Basic;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 import java.time.LocalDate;
 import java.util.Arrays;
 
+@Entity
 public class Paquete {
+    @Id
     private int idPaquete;
+
+    @Basic
     private String codigo;
     private String descrip;
     private int peso;

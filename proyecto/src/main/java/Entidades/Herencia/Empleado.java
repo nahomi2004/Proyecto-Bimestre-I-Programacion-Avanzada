@@ -1,7 +1,9 @@
 package Entidades.Herencia;
 
 import Entidades.NoHerencia.Entrega;
+import jakarta.persistence.Entity;
 
+@Entity
 public class Empleado extends Persona {
     private String ciudad;
     private Entrega entrega;

@@ -1,11 +1,18 @@
 package Entidades.NoHerencia;
 
 import Entidades.Herencia.Cliente;
+import jakarta.persistence.Basic;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 import java.time.LocalDate;
 
+@Entity
 public class Entrega {
+    @Id
     private String codigo;
+
+    @Basic
     private LocalDate fecha;
     private String obs;
     private Paquete paquete;

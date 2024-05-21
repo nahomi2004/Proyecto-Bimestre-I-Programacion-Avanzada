@@ -1,12 +1,16 @@
 package Entidades.Herencia;
 
 import Entidades.NoHerencia.Direccion;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 
 import java.util.ArrayList;
 
-public class Cliente extends Persona {
 
+@Entity
+public class Cliente extends Persona {
     private String celular;
+    @OneToMany(mappedBy = "cliente")
     private ArrayList<Direccion> direcciones;
 
     public Cliente() {

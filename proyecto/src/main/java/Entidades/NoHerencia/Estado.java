@@ -1,9 +1,17 @@
 package Entidades.NoHerencia;
 
+import jakarta.persistence.Basic;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 import java.time.LocalDate;
 
+@Entity
 public class Estado {
+    @Id
     private int tipo;
+
+    @Basic
     private String estado;
     private LocalDate fecha;
     private String observacion;
