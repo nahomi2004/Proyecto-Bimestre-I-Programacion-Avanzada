@@ -1,9 +1,7 @@
 package Entidades.NoHerencia;
 
 import Entidades.Herencia.Cliente;
-import jakarta.persistence.Basic;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
@@ -15,7 +13,12 @@ public class Entrega {
     @Basic
     private LocalDate fecha;
     private String obs;
+    @OneToOne
+    @JoinColumn(name = "paquete_idPaquete")
     private Paquete paquete;
+
+    @OneToOne
+    @JoinColumn(name = "cliente_cedula")
     private Cliente cliente;
 
     public Entrega() {

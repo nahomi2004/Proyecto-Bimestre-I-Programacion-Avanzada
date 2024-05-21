@@ -2,10 +2,14 @@ package Entidades.Herencia;
 
 import Entidades.NoHerencia.Entrega;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Empleado extends Persona {
     private String ciudad;
+    @OneToOne
+    @JoinColumn(name = "entrega_codigo")
     private Entrega entrega;
 
     public Empleado() {

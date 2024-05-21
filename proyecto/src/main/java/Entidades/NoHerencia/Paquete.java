@@ -3,6 +3,7 @@ package Entidades.NoHerencia;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -17,6 +18,8 @@ public class Paquete {
     private String descrip;
     private int peso;
     private int alto;
+
+    @OneToMany(mappedBy = "paquete")
     private Estado[] estados = new Estado[4];
 
     public Paquete() {
