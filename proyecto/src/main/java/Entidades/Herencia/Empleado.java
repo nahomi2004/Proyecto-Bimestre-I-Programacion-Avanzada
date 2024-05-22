@@ -8,9 +8,9 @@ import jakarta.persistence.OneToOne;
 @Entity
 public class Empleado extends Persona {
     private String ciudad;
-    @OneToOne
-    @JoinColumn(name = "entrega_codigo")
-    private Entrega entrega;
+    // @OneToOne
+    // @JoinColumn(name = "entrega_codigo")
+    // private Entrega entrega;
 
     public Empleado() {
     }
@@ -28,13 +28,13 @@ public class Empleado extends Persona {
         this.ciudad = ciudad;
     }
 
-    public Entrega getEntrega() {
+    /* public Entrega getEntrega() {
         return entrega;
-    }
+    } */
 
-    public void setEntrega(Entrega entrega) {
+    /* public void setEntrega(Entrega entrega) {
         this.entrega = entrega;
-    }
+    }*/
 
     @Override
     public String toString() {

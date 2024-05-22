@@ -1,11 +1,18 @@
 package Entidades.Herencia;
 
+import Entidades.NoHerencia.Direccion;
+import Entidades.NoHerencia.Entrega;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+
+import java.util.ArrayList;
 
 @Entity
 public class Repartidor extends Empleado {
     private int zona;
 
+    @OneToMany(mappedBy = "empleado")
+    private ArrayList<Entrega> entregas;
     public Repartidor() {
     }
 
@@ -20,6 +27,14 @@ public class Repartidor extends Empleado {
 
     public void setZona(int zona) {
         this.zona = zona;
+    }
+
+    public ArrayList<Entrega> getEntregas() {
+        return entregas;
+    }
+
+    public void setEntregas(ArrayList<Entrega> entregas) {
+        this.entregas = entregas;
     }
 
     @Override

@@ -21,27 +21,27 @@ public class LEntrega {
     }
 
     public boolean comprobarEstado1() {
-        if(entrega.getPaquete().getEstados()[0].getFecha() == null){
+        if(entrega.getPaquetes().getEstados()[0].getFecha() == null){
             return true;
         }
         return false;
     }
 
     public boolean comprobarEstado2() {
-        if(entrega.getPaquete().getEstados()[1].getFecha() == null){
+        if(entrega.getPaquetes().getEstados()[1].getFecha() == null){
             return true;
         }
         return false;
     }
 
     public boolean comprobarEstado3() {
-        if(entrega.getPaquete().getEstados()[2].getFecha() == null){
+        if(entrega.getPaquetes().getEstados()[2].getFecha() == null){
             return true;
         }
         return false;
     }
     public boolean comprobarEstado4() {
-        if(entrega.getPaquete().getEstados()[3].getFecha() == null){
+        if(entrega.getPaquetes().getEstados()[3].getFecha() == null){
             return true;
         }
         return false;

@@ -1,9 +1,11 @@
 package Entidades.NoHerencia;
 
 import Entidades.Herencia.Cliente;
+import Entidades.Herencia.Repartidor;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 @Entity
 public class Entrega {
@@ -13,14 +15,16 @@ public class Entrega {
     @Basic
     private LocalDate fecha;
     private String obs;
-    @OneToOne
-    @JoinColumn(name = "paquete_idPaquete")
-    private Paquete paquete;
+    @OneToMany(mappedBy = "entrega")
+    private ArrayList<Paquete> paquetes;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "cliente_cedula")
     private Cliente cliente;
 
+    @ManyToOne
+    @JoinColumn(name = "repartidor_cedula")
+    private Repartidor repartidor;
     public Entrega() {
     }
 
@@ -54,12 +58,12 @@ public class Entrega {
         this.obs = obs;
     }
 
-    public Paquete getPaquete() {
-        return paquete;
+    public ArrayList<Paquete> getPaquetes() {
+        return paquetes;
     }
 
-    public void setPaquete(Paquete paquete) {
-        this.paquete = paquete;
+    public void setPaquetes(ArrayList<Paquete> paquete) {
+        this.paquetes = paquete;
     }
 
     public Cliente getCliente() {
@@ -68,6 +72,14 @@ public class Entrega {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public Repartidor getRepartidor() {
+        return repartidor;
+    }
+
+    public void setRepartidor(Repartidor repartidor) {
+        this.repartidor = repartidor;
     }
 
     @Override

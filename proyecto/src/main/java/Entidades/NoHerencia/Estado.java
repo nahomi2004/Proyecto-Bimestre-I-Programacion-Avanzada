@@ -1,8 +1,6 @@
 package Entidades.NoHerencia;
 
-import jakarta.persistence.Basic;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
@@ -15,6 +13,10 @@ public class Estado {
     private String estado;
     private LocalDate fecha;
     private String observacion;
+
+    @ManyToOne
+    @JoinColumn(name = "paquete_idPaquete")
+    private Paquete paquete;
 
     public Estado() {
     }
@@ -56,6 +58,14 @@ public class Estado {
 
     public void setObservacion(String observacion) {
         this.observacion = observacion;
+    }
+
+    public Paquete getPaquete() {
+        return paquete;
+    }
+
+    public void setPaquete(Paquete paquete) {
+        this.paquete = paquete;
     }
 
     @Override

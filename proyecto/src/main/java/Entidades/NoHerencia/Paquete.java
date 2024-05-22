@@ -1,9 +1,6 @@
 package Entidades.NoHerencia;
 
-import jakarta.persistence.Basic;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -21,6 +18,10 @@ public class Paquete {
 
     @OneToMany(mappedBy = "paquete")
     private Estado[] estados = new Estado[4];
+
+    @ManyToOne
+    @JoinColumn(name = "entrega_codigo")
+    private Entrega entrega;
 
     public Paquete() {
     }
@@ -80,6 +81,14 @@ public class Paquete {
 
     public void setEstados(Estado[] estados) {
         this.estados = estados;
+    }
+
+    public Entrega getEntrega() {
+        return entrega;
+    }
+
+    public void setEntrega(Entrega entrega) {
+        this.entrega = entrega;
     }
 
     @Override

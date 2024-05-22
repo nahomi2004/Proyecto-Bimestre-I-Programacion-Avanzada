@@ -1,6 +1,7 @@
 package Entidades.Herencia;
 
 import Entidades.NoHerencia.Direccion;
+import Entidades.NoHerencia.Entrega;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 
@@ -12,6 +13,9 @@ public class Cliente extends Persona {
     private String celular;
     @OneToMany(mappedBy = "cliente")
     private ArrayList<Direccion> direcciones;
+
+    @OneToMany(mappedBy = "cliente")
+    private ArrayList<Entrega> entregas;
 
     public Cliente() {
     }
@@ -36,6 +40,14 @@ public class Cliente extends Persona {
 
     public void setCelular(String celular) {
         this.celular = celular;
+    }
+
+    public ArrayList<Entrega> getEntregas() {
+        return entregas;
+    }
+
+    public void setEntregas(ArrayList<Entrega> entregas) {
+        this.entregas = entregas;
     }
 
     /*Método HacerActual()  ---->   actualiza la dirección actual*/
