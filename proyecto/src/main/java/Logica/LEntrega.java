@@ -1,6 +1,7 @@
 package Logica;
 
 import Entidades.NoHerencia.Entrega;
+import Entidades.NoHerencia.Paquete;
 
 public class LEntrega {
     Entrega entrega;
@@ -21,12 +22,16 @@ public class LEntrega {
     }
 
     public boolean comprobarEstado1() {
-        if(entrega.getPaquetes().getEstados()[0].getFecha() == null){
-            return true;
+        int i = 0;
+        for(Paquete p: entrega.getPaquetes()) {
+            if(p.getEstados()[i].getFecha() != null){
+                return false;
+            }
+            i++;
         }
-        return false;
+        return true;
     }
-
+    /*
     public boolean comprobarEstado2() {
         if(entrega.getPaquetes().getEstados()[1].getFecha() == null){
             return true;
@@ -46,4 +51,5 @@ public class LEntrega {
         }
         return false;
     }
+     */
 }

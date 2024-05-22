@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Persona {
     @Id
     private String cedula;

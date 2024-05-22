@@ -1,8 +1,7 @@
 package Entidades.NoHerencia;
 
-import jakarta.persistence.Basic;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import Entidades.Herencia.Cliente;
+import jakarta.persistence.*;
 
 @Entity
 public class Direccion {
@@ -14,6 +13,9 @@ public class Direccion {
     private String calle2;
     private String referencia;
     private int actual;
+    @ManyToOne
+    @JoinColumn(name = "cliente_cedula")
+    private Cliente cliente;
 
     public Direccion() {
     }

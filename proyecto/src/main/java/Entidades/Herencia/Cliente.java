@@ -6,16 +6,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
 public class Cliente extends Persona {
     private String celular;
     @OneToMany(mappedBy = "cliente")
-    private ArrayList<Direccion> direcciones;
+    private List<Direccion> direcciones;
 
     @OneToMany(mappedBy = "cliente")
-    private ArrayList<Entrega> entregas;
+    private List<Entrega> entregas;
 
     public Cliente() {
     }
@@ -23,14 +24,15 @@ public class Cliente extends Persona {
     public Cliente(String cedula, String nombre, String apellido, String mail, String celular) {
         super(cedula, nombre, apellido, mail);
         this.celular = celular;
-        direcciones = new ArrayList<>();
+        this.direcciones = new ArrayList<>();
+        this.entregas = new ArrayList<>();
     }
 
-    public ArrayList<Direccion> getDirecciones() {
+    public List<Direccion> getDirecciones() {
         return direcciones;
     }
 
-    public void setDirecciones(ArrayList<Direccion> direcciones) {
+    public void setDirecciones(List<Direccion> direcciones) {
         this.direcciones = direcciones;
     }
 
@@ -42,11 +44,11 @@ public class Cliente extends Persona {
         this.celular = celular;
     }
 
-    public ArrayList<Entrega> getEntregas() {
+    public List<Entrega> getEntregas() {
         return entregas;
     }
 
-    public void setEntregas(ArrayList<Entrega> entregas) {
+    public void setEntregas(List<Entrega> entregas) {
         this.entregas = entregas;
     }
 

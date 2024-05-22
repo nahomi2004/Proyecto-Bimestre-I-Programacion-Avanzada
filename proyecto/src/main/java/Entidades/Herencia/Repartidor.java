@@ -6,19 +6,22 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 
 import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 public class Repartidor extends Empleado {
     private int zona;
 
-    @OneToMany(mappedBy = "empleado")
-    private ArrayList<Entrega> entregas;
+    @OneToMany(mappedBy = "repartidor")
+    private List<Entrega> entregas;
     public Repartidor() {
     }
 
     public Repartidor(String cedula, String nombre, String apellido, String mail, String ciudad, int zona) {
         super(cedula, nombre, apellido, mail, ciudad);
         this.zona = zona;
+        this.entregas = new ArrayList<>();
     }
 
     public int getZona() {
@@ -29,11 +32,11 @@ public class Repartidor extends Empleado {
         this.zona = zona;
     }
 
-    public ArrayList<Entrega> getEntregas() {
+    public List<Entrega> getEntregas() {
         return entregas;
     }
 
-    public void setEntregas(ArrayList<Entrega> entregas) {
+    public void setEntregas(List<Entrega> entregas) {
         this.entregas = entregas;
     }
 

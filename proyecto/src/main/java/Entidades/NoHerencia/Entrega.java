@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Entrega {
@@ -16,7 +17,7 @@ public class Entrega {
     private LocalDate fecha;
     private String obs;
     @OneToMany(mappedBy = "entrega")
-    private ArrayList<Paquete> paquetes;
+    private List<Paquete> paquetes;
 
     @ManyToOne
     @JoinColumn(name = "cliente_cedula")
@@ -32,6 +33,7 @@ public class Entrega {
         this.codigo = codigo;
         this.fecha = fecha;
         this.obs = obs;
+        this.paquetes = new ArrayList<>();
     }
 
     public String getCodigo() {
@@ -58,11 +60,11 @@ public class Entrega {
         this.obs = obs;
     }
 
-    public ArrayList<Paquete> getPaquetes() {
+    public List<Paquete> getPaquetes() {
         return paquetes;
     }
 
-    public void setPaquetes(ArrayList<Paquete> paquete) {
+    public void setPaquetes(List<Paquete> paquete) {
         this.paquetes = paquete;
     }
 

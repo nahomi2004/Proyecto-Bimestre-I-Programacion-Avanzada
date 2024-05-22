@@ -19,8 +19,6 @@ public class Main {
         int op = sc.nextInt();
 
          */
-        
-
 
         try (EntityManagerFactory entityManagerFactory =
                      Persistence.createEntityManagerFactory("persistenciaUWU")) {

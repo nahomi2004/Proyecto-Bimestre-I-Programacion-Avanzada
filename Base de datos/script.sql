@@ -1,97 +1,96 @@
+-- Script para crear la base de datos y las tablas según las entidades JPA proporcionadas.
+
 -- Crear la base de datos
-CREATE DATABASE IF NOT EXISTS logistica;
+CREATE DATABASE logistica;
 USE logistica;
 
 -- Crear la tabla Persona
 CREATE TABLE Persona (
-    cedula VARCHAR(20) PRIMARY KEY not null,
-    apellidos VARCHAR(50),
-    nombres VARCHAR(50),
-    mail VARCHAR(50)
+    cedula VARCHAR(255) NOT NULL,
+    nombre VARCHAR(255),
+    apellido VARCHAR(255),
+    mail VARCHAR(255),
+    PRIMARY KEY (cedula)
 );
 
--- Crear la tabla Direccion
-CREATE TABLE Direccion (
-    codigo VARCHAR(20) PRIMARY KEY not null,
-    calle1 VARCHAR(100),
-    calle2 VARCHAR(100),
-    referencia VARCHAR(200),
-    actual BOOLEAN
-);
-
--- Crear la tabla Cliente
+-- Crear la tabla Cliente que hereda de Persona
 CREATE TABLE Cliente (
-    cedula VARCHAR(20) PRIMARY KEY not null,
-    celular VARCHAR(20),
-    codigo_direcc VARCHAR(20),
-    FOREIGN KEY (cedula) REFERENCES Persona(cedula),
-    FOREIGN KEY (codigo_direcc) REFERENCES Direccion(codigo)
+    cedula VARCHAR(255) NOT NULL,
+    celular VARCHAR(255),
+    PRIMARY KEY (cedula),
+    FOREIGN KEY (cedula) REFERENCES Persona(cedula)
 );
 
--- Crear la tabla Paquete
-CREATE TABLE Paquete (
-    idpaq INT PRIMARY KEY AUTO_INCREMENT,
-    codigo VARCHAR(20),
-    descripcion VARCHAR(200),
-    peso INT,
-    alto INT
+-- Crear la tabla Empleado que hereda de Persona
+CREATE TABLE Empleado (
+    cedula VARCHAR(255) NOT NULL,
+    ciudad VARCHAR(255),
+    PRIMARY KEY (cedula),
+    FOREIGN KEY (cedula) REFERENCES Persona(cedula)
 );
+
+-- Crear la tabla Bodeguero que hereda de Empleado
+CREATE TABLE Bodeguero (
+    cedula VARCHAR(255) NOT NULL,
+    local VARCHAR(255),
+    PRIMARY KEY (cedula),
+    FOREIGN KEY (cedula) REFERENCES Empleado(cedula)
+);
+
+-- Crear la tabla Repartidor que hereda de Empleado
+CREATE TABLE Repartidor (
+    cedula VARCHAR(255) NOT NULL,
+    zona INT,
+    PRIMARY KEY (cedula),
+    FOREIGN KEY (cedula) REFERENCES Empleado(cedula)
+);
+
 
 -- Crear la tabla Entrega
 CREATE TABLE Entrega (
-    codigo VARCHAR(20) PRIMARY KEY,
+    codigo VARCHAR(255) NOT NULL,
     fecha DATE,
-    observacion VARCHAR(200),
-    cliente_cedula VARCHAR(20),
-    repartidor_cedula VARCHAR(20),
+    obs VARCHAR(255),
+    cliente_cedula VARCHAR(255),
+    repartidor_cedula VARCHAR(255),
+    PRIMARY KEY (codigo),
     FOREIGN KEY (cliente_cedula) REFERENCES Cliente(cedula),
     FOREIGN KEY (repartidor_cedula) REFERENCES Repartidor(cedula)
 );
 
--- Crear la tabla Empleado
-CREATE TABLE Empleado (
-    cedula VARCHAR(20),
-    ciudad VARCHAR(50),
-    FOREIGN KEY (cedula) REFERENCES Persona(cedula)
+-- Crear la tabla Paquete
+CREATE TABLE Paquete (
+    idPaquete INT NOT NULL,
+    codigo VARCHAR(255),
+    descrip VARCHAR(255),
+    peso INT,
+    alto INT,
+    entrega_codigo VARCHAR(255),
+    PRIMARY KEY (idPaquete),
+    FOREIGN KEY (entrega_codigo) REFERENCES Entrega(codigo)
 );
 
--- Crear la tabla Repartidor
-CREATE TABLE Repartidor (
-    cedula VARCHAR(20),
-    zona INT,
-    FOREIGN KEY (cedula) REFERENCES Empleado(cedula)
-);
-
--- Crear la tabla Bodeguero
-CREATE TABLE Bodeguero (
-    cedula VARCHAR(20),
-    local_b VARCHAR(50),
-    FOREIGN KEY (cedula) REFERENCES Empleado(cedula)
+-- Crear la tabla Direccion
+CREATE TABLE Direccion (
+    codigo VARCHAR(255) NOT NULL,
+    calle1 VARCHAR(255),
+    calle2 VARCHAR(255),
+    referencia VARCHAR(255),
+    actual INT,
+    cliente_cedula VARCHAR(255),
+    PRIMARY KEY (codigo),
+    FOREIGN KEY (cliente_cedula) REFERENCES Cliente(cedula)
 );
 
 -- Crear la tabla Estado
 CREATE TABLE Estado (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    tipo INT,
-    estado VARCHAR(50),
+    tipo INT NOT NULL,
+    estado VARCHAR(255),
     fecha DATE,
-    observacion VARCHAR(200),
-    paquete_id INT,
-    FOREIGN KEY (paquete_id) REFERENCES Paquete(idpaq)
+    observacion VARCHAR(255),
+    paquete_idPaquete INT,
+    PRIMARY KEY (tipo),
+    FOREIGN KEY (paquete_idPaquete) REFERENCES Paquete(idPaquete)
 );
 
--- Crear la relación entre Cliente y Direccion
-ALTER TABLE Direccion
-ADD CONSTRAINT FK_ClienteDireccion FOREIGN KEY (cliente_cedula) REFERENCES Cliente(cedula);
 
--- Crear la relación entre Entrega y Cliente
-ALTER TABLE Entrega
-ADD CONSTRAINT FK_EntregaCliente FOREIGN KEY (cliente_cedula) REFERENCES Cliente(cedula);
-
--- Crear la relación entre Entrega y Repartidor
-ALTER TABLE Entrega
-ADD CONSTRAINT FK_EntregaRepartidor FOREIGN KEY (repartidor_cedula) REFERENCES Repartidor(cedula);
-
--- Crear la relación entre Paquete y Estado
-ALTER TABLE Estado
-ADD CONSTRAINT FK_PaqueteEstado FOREIGN KEY (paquete_id) REFERENCES Paquete(idpaq);
