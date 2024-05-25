@@ -20,7 +20,7 @@ public class LDirecc {
         this.direccion = direccion;
     }
 
-    public Boolean comprobarCalles (){
+    public boolean comprobarCalles (){
         String principal = direccion.getCalle1().replaceAll("\\D", "").toLowerCase();
         String sec1 = direccion.getCalle2().replaceAll("\\D", "").toLowerCase();
 

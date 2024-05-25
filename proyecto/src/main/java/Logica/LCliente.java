@@ -28,14 +28,14 @@ public class LCliente {
         return cedula.length() == 10 && cedula.substring(0, 9).matches("[0-9]*");
     }
 
-    public Boolean comprobarCorreo() {
+    public Boolean comprobarCorreo(String correo) {
         String regex = "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$";
         Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(cliente.getMail());
+        Matcher matcher = pattern.matcher(correo);
         return matcher.matches();
     }
 
-    public Boolean comprobarDirecciones() {
+    public boolean comprobarDirecciones() {
         for (int i = 0; i < cliente.getDirecciones().size(); i++) {
             for (int j = i + 1; j < cliente.getDirecciones().size(); i++) {
                 return (cliente.getDirecciones().get(i).equals(cliente.getDirecciones().get(j)));
